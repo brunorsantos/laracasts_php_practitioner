@@ -1,12 +1,18 @@
 <?php
 
 
-$query = require 'Bootstrap.php';
+$query = require 'core/Bootstrap.php';
 
 
-$dados = $query->selectAll('quiz');
-
-//dd($dados);
+//require 'routes.php';
 
 
-require 'index.view.php';
+$uri = trim($_SERVER['REQUEST_URI'],'/');
+
+
+
+require Router::load('routes.php')->direct($uri);
+
+
+
+
